@@ -1,0 +1,25 @@
+name: Ingest CSV to DB
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 18 * * 3"   # 매주 수요일 03:00 KST 기준 조정(UTC 18:00)
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install
+        run: npm ci
+      - name: Setup Prisma
+        run: npx prisma generate
+      - name: Ingest script
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: node scripts/ingest.js
