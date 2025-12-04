@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Transaction {
+  id           String @id @default(cuid())
+  si           String          // 시/도
+  gu           String          // 구/군
+  dong         String          // 법정동
+  aptName      String
+  contractYM   String          // 202501 형식
+  contractDay  String          // 01~31
+  area_m2      Float
+  floor        Int?
+  price_10k    Int             // 만원 단위
+  builtYear    Int?
+  createdAt    DateTime @default(now())
+  @@index([si, gu, dong, contractYM])
+  @@index([aptName, contractYM])
+}
