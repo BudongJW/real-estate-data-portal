@@ -164,9 +164,10 @@ Vercel Dashboard → Settings → Environment Variables
 
 ---
 
-## 👑 만든 사람
+## 📢 만든 사람
 
-**부동산 임장왕 – Real Estate Insight Creator**  
+**부동산쟁이 견문록 | Real Estate Insight Creator**  
+한국 부동산 콘텐츠를 만들고 있습니다.  
 
 
 
